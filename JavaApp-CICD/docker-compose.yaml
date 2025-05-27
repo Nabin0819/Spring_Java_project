@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: petclinic
+      MYSQL_USER: petclinic
+      MYSQL_PASSWORD: petclinic
+    ports:
+      - "3306:3306"
+    networks:
+      - petclinic-net
+
+  petclinic-app:
+    build: .
+    container_name: petclinic-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - petclinic-net
+
+networks:
+  petclinic-net:
+    driver: bridge
+
