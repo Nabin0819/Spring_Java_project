@@ -38,7 +38,7 @@ jobs:
           context: ./JavaApp-CICD
           file: ./JavaApp-CICD/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/git-petclinic:v1.0
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/git-petclinic
 
   deploy:
     name: Deploy to EC2 Instance
@@ -85,7 +85,7 @@ jobs:
               mysql
 
             echo "Pulling and starting Petclinic container..."
-            sudo docker pull nabin011011/git-petclinic:v1.0
+            sudo docker pull nabin011011/git-petclinic
             sudo docker run -d --name petclinic --network petclinic-net \
               -p 8080:8080 \
-              nabin011011/git-petclinic:v1.0
+              nabin011011/git-petclinic
