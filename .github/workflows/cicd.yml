@@ -38,7 +38,7 @@ jobs:
           context: ./JavaApp-CICD
           file: ./JavaApp-CICD/Dockerfile
           push: true
-          tags: nabin011011/git-petclinic:v1.0
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/git-petclinic:v1.0
 
   deploy:
     name: Deploy to EC2 Instance
